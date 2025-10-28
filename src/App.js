@@ -1,10 +1,9 @@
 import  "./index.css";
+import Body from "./pages/Body";
 
 function App() {
   return (
-   <div className="border border-green-500">
-    Namaste React
-   </div>
+   <Body/>
   );
 }
 
