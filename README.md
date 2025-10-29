@@ -1,4 +1,5 @@
 # Netflix-GPT
+#   Hosting URl= "https://netflix-gpt-b63e0.web.app"
 
 - Create React App
 - Configure TailwindCSS
