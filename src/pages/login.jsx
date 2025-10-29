@@ -5,13 +5,13 @@ import {signupSchema,signinSchema} from "../utils/zodSchemaValidation/login"
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import {auth} from "../utils/firebaseConfig";
 import { showError } from "../utils/toastMessage"
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSignInData } from "../utils/store/authSlice";
+import Header from "./Header";
+import { BG_IMAGE_URL, PROFILE_URL } from "../utils/constants/urlConst";
 
 
    const Login = () => {
-    const navigate=useNavigate();
     const dispatch=useDispatch(); 
   const [buttonType, setButtonType] = useState("Sign In");
   const {register,  handleSubmit, formState: { errors },reset} = useForm({
@@ -31,7 +31,7 @@ createUserWithEmailAndPassword(auth,data.email,data.password)
   .then((userCredential) => {
     const user=userCredential.user
 updateProfile(user, {
-  displayName:data.name , photoURL: "https://occ-0-6246-2186.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
+  displayName:data.name , photoURL:{PROFILE_URL }
 }).then(() => {
   const {uid,email,displayName,photoURL}=auth.currentUser;
   dispatch(setSignInData({
@@ -39,8 +39,7 @@ updateProfile(user, {
       email: email,
       displayName: displayName,
       photoURL:photoURL
-    }))
-   navigate("/browse") 
+    })) 
 }).catch((error) => {
   // An error occurred
   // ...
@@ -56,7 +55,6 @@ updateProfile(user, {
     }else{
       signInWithEmailAndPassword(auth, data.email,data.password)
   .then((userCredential) => {
-    navigate("/browse")
     // const user = userCredential.user;
   })
   .catch((error) => {
@@ -74,15 +72,10 @@ updateProfile(user, {
   };
   return (
     <div className="relative">
-      <div className='absolute px-8 py-2 z-10'>
-    <img 
-    className='w-44'
-    alt="logo"
-    src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-08-26/consent/87b6a5c0-0104-4e96-a291-092c11350111/0198e689-25fa-7d64-bb49-0f7e75f898d2/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"/>
-    </div>
+      <Header/>
       <div>
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9ba9f0e2-b246-47f4-bd1f-3e84c23a5db8/web/IN-en-20251020-TRIFECTA-perspective_d6da84e9-6145-4b1e-bb51-e402c966a045_large.jpg"
+          src={BG_IMAGE_URL}
           alt="bg-image"
           className=""
         />

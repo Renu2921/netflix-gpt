@@ -11,11 +11,9 @@ const authSlice = createSlice({
     setSignInData: (state, action) => {
       state.signInData = action.payload;
     },
-    removeUser: (state) => {
-      state.signInData = null; 
-    },
+    
   },
 });
 
-export const { setSignInData, removeUser } = authSlice.actions;
+export const { setSignInData } = authSlice.actions;
 export default authSlice.reducer;
