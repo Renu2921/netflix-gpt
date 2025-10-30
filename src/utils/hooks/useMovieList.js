@@ -1,11 +1,11 @@
-import {useEffect} from 'react'
+import {useCallback, useEffect} from 'react'
 import { API_OPTIONS } from '../constants/urlConst';
 import { useDispatch } from 'react-redux';
 import { setMovieList, setPolulatMovieList, setTopRatedMovieList, setUpcomingMovieList } from '../store/movieListSlice';
 
 const useMovieList=()=>{
 const dispatch=useDispatch();
-const MoviesListData=async()=>{
+const MoviesListData=useCallback(async()=>{
     try{
 const response=await fetch("https://api.themoviedb.org/3/movie/now_playing",API_OPTIONS);
    const jsonData=await response.json();
@@ -13,18 +13,18 @@ const response=await fetch("https://api.themoviedb.org/3/movie/now_playing",API_
     }catch(error){
         console.error(error);
     }
-}
+},[dispatch])
 
 useEffect(()=>{
 MoviesListData();
-},[]);
+},[MoviesListData]);
 };
 
 export default useMovieList;
 
 export const usePolularMovies=()=>{
     const dispatch=useDispatch();
-const popularMoviesListData=async()=>{
+const popularMoviesListData=useCallback(async()=>{
     try{
 const response=await fetch("https://api.themoviedb.org/3/movie/popular",API_OPTIONS);
    const jsonData=await response.json();
@@ -32,16 +32,16 @@ const response=await fetch("https://api.themoviedb.org/3/movie/popular",API_OPTI
     }catch(error){
         console.error(error);
     }
-}
+},[dispatch])
 
 useEffect(()=>{
 popularMoviesListData();
-},[]);
+},[popularMoviesListData]);
 }
 
 export const useTopratedMovies=()=>{
     const dispatch=useDispatch();
-const topRatedMoviesListData=async()=>{
+const topRatedMoviesListData=useCallback(async()=>{
     try{
 const response=await fetch("https://api.themoviedb.org/3/movie/top_rated",API_OPTIONS);
    const jsonData=await response.json();
@@ -49,16 +49,16 @@ const response=await fetch("https://api.themoviedb.org/3/movie/top_rated",API_OP
     }catch(error){
         console.error(error);
     }
-}
+},[dispatch])
 
 useEffect(()=>{
 topRatedMoviesListData();
-},[]);
+},[topRatedMoviesListData]);
 }
 
 export const useUpcomingMovies=()=>{
     const dispatch=useDispatch();
-const upcomingMoviesListData=async()=>{
+const upcomingMoviesListData=useCallback(async()=>{
     try{
 const response=await fetch("https://api.themoviedb.org/3/movie/upcoming",API_OPTIONS);
    const jsonData=await response.json();
@@ -66,9 +66,9 @@ const response=await fetch("https://api.themoviedb.org/3/movie/upcoming",API_OPT
     }catch(error){
         console.error(error);
     }
-}
+},[dispatch])
 
 useEffect(()=>{
 upcomingMoviesListData();
-},[]);
+},[upcomingMoviesListData]);
 }

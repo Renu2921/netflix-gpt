@@ -40,7 +40,7 @@ const Header = () => {
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [dispatch,navigate]);
 
   const handleToggle = () => {
     dispatch(setShowGptPage());
