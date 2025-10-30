@@ -72,11 +72,11 @@ updateProfile(user, {
         <img
           src={BG_IMAGE_URL}
           alt="bg-image"
-          className=""
+          className="h-screen w-full object-cover"
         />
       </div>
       <div className=" text-white absolute inset-0 flex justify-center items-center bg-black bg-opacity-40 ">
-        <div className=" w-[25%] bg-black bg-opacity-70 p-12 rounded-md">
+        <div className=" w-[90%] md:w-[25%] bg-black bg-opacity-70 p-12 rounded-md">
           <h1 className="text-white font-semibold text-[2.2rem] mb-7">
             {buttonType}
           </h1>

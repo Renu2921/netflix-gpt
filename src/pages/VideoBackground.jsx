@@ -16,7 +16,7 @@ const VideoBackground = ({id}) => {
      trailer();
     },[])
   return (
-    <div className='w-screen'>
+    <div className='w-screen pt-16 md:pt-0'>
      <iframe 
      className='w-screen aspect-video'
      src={"https://www.youtube.com/embed/" + officialTrailer?.[0]?.key + 

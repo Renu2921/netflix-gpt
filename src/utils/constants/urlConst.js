@@ -10,6 +10,4 @@ export const API_OPTIONS={
   }
 };
 
-export const POSTER_URL="https://image.tmdb.org/t/p/w200"
-// https://developer.themoviedb.org/reference/movie-videos
-// https://image.tmdb.org/t/p/w500/xR0IhVBjbNU34b8erhJCgRbjXo3.jpg 
+export const POSTER_URL="https://image.tmdb.org/t/p/w400"
