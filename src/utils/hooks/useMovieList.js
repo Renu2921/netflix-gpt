@@ -8,11 +8,10 @@ const dispatch=useDispatch();
 const MoviesListData=async()=>{
     try{
 const response=await fetch("https://api.themoviedb.org/3/movie/now_playing",API_OPTIONS);
-console.log("resaponse",response)
    const jsonData=await response.json();
    dispatch(setMovieList(jsonData.results));
     }catch(error){
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -28,11 +27,10 @@ export const usePolularMovies=()=>{
 const popularMoviesListData=async()=>{
     try{
 const response=await fetch("https://api.themoviedb.org/3/movie/popular",API_OPTIONS);
-console.log("resaponse",response)
    const jsonData=await response.json();
    dispatch(setPolulatMovieList(jsonData.results));
     }catch(error){
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -46,11 +44,10 @@ export const useTopratedMovies=()=>{
 const topRatedMoviesListData=async()=>{
     try{
 const response=await fetch("https://api.themoviedb.org/3/movie/top_rated",API_OPTIONS);
-console.log("resaponse",response)
    const jsonData=await response.json();
    dispatch(setTopRatedMovieList(jsonData.results));
     }catch(error){
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -64,11 +61,10 @@ export const useUpcomingMovies=()=>{
 const upcomingMoviesListData=async()=>{
     try{
 const response=await fetch("https://api.themoviedb.org/3/movie/upcoming",API_OPTIONS);
-console.log("resaponse",response)
    const jsonData=await response.json();
    dispatch(setUpcomingMovieList(jsonData.results));
     }catch(error){
-        console.log(error);
+        console.error(error);
     }
 }
 

@@ -6,14 +6,11 @@ import { setMovieTrailer } from '../utils/store/movieListSlice';
 const VideoBackground = ({id}) => {
     const dispatch=useDispatch();
     const trailerVideo=useSelector((store)=>store.movies.movieTrailer);
-    console.log("trailerVideo",trailerVideo)
     const officialTrailer=trailerVideo?.filter((video)=>video?.type==="Trailer");
-    console.log("officialTrailer",officialTrailer)
     const trailer=async()=>{
         const response=await fetch("https://api.themoviedb.org/3/movie/"+id+"/videos",API_OPTIONS);
         const jsonData=await response.json();
         dispatch(setMovieTrailer(jsonData.results))
-        console.log("trailerData",jsonData)
     }
     useEffect(()=>{
      trailer();

@@ -24,7 +24,6 @@ import { BG_IMAGE_URL, PROFILE_URL } from "../utils/constants/urlConst";
     }
   });
   const onSubmit = (data) => {
-    // console.log("✅ Form Submitted:", data);
     reset();
     if(buttonType==="Sign up"){
 createUserWithEmailAndPassword(auth,data.email,data.password)
@@ -48,19 +47,15 @@ updateProfile(user, {
     
   })
   .catch((error) => {
-    // const errorCode = error.code;
     const errorMessage = error.message;
     showError(errorMessage)
   });
     }else{
       signInWithEmailAndPassword(auth, data.email,data.password)
   .then((userCredential) => {
-    // const user = userCredential.user;
   })
   .catch((error) => {
-    // const errorCode = error.code;
     const errorMessage = error.message;
-    // console.log("errorcode", errorCode)
   showError(errorMessage)
   });
     }

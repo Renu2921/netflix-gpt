@@ -10,7 +10,6 @@ const MainContainer = () => {
   useTopratedMovies();
   useUpcomingMovies()
     const movieList=useSelector((store)=>store.movies.movieList);
-  console.log("movieList",movieList);
 
  if (!movieList || movieList?.length===0) {
     return <p>Loading...</p>;
