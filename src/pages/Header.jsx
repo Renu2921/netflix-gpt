@@ -18,7 +18,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    signOut(auth).catch((error) => console.log(error));
+    signOut(auth).catch((error) =>
+       console.error(error));
   };
 
   useEffect(() => {
